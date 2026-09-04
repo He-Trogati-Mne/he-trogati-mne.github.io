@@ -450,30 +450,7 @@
     </div>
 
     <script>
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        let audioBuffer = null;
-
-        // Предзагрузка звука через Web Audio API (без задержек)
-        fetch('re-zero-respawn.mp3')
-            .then(res => res.arrayBuffer())
-            .then(data => audioCtx.decodeAudioData(data))
-            .then(buffer => {
-                audioBuffer = buffer;
-            })
-            .catch(() => {});
-
-        function playSound() {
-            if (audioCtx && audioBuffer) {
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-                const source = audioCtx.createBufferSource();
-                source.buffer = audioBuffer;
-                source.connect(audioCtx.destination);
-                source.start(0);
-            }
-        }
-
+        
         window.addEventListener('DOMContentLoaded', () => {
             const percentEl = document.getElementById('loader-percent');
             const loader = document.getElementById('loader');
