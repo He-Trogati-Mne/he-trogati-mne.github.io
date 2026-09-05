@@ -450,32 +450,6 @@
     </div>
 
     <script>
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            const percentEl = document.getElementById('loader-percent');
-            const loader = document.getElementById('loader');
-            
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.floor(Math.random() * 10) + 6;
-                if (progress > 100) progress = 100;
-                
-                percentEl.textContent = `${progress}%`;
-
-                if (progress === 100) {
-                    clearInterval(interval);
-                    
-                    // Попытка воспроизведения сразу после загрузки
-                    playSound();
-
-                    // Автоматическое скрытие лоадера без ожидания действий
-                    setTimeout(() => {
-                        loader.classList.add('hidden');
-                    }, 300);
-                }
-            }, 60);
-        });
-
         function updateKyivTime() {
             const timeElement = document.getElementById('kyiv-time');
             const options = {
